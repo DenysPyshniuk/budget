@@ -6,7 +6,7 @@ import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
 import DisplayBalance from './components/DisplayBalance';
 import DisplayBalances from './components/DisplayBalances';
-import EntryLine from './components/EntryLine';
+import EntryLines from './components/EntryLines';
 
 function App() {
   const [entries, setentries] = useState(initialEntries)
@@ -17,14 +17,7 @@ function App() {
       <DisplayBalances />
       <MainHeader type='h3' title='History' />
 
-      {entries.map((entry) => (
-      <EntryLine
-        description={entry.description}
-        value={entry.value}
-        isExpense={entry.isExpense} />
-      ))
-      }
-
+      <EntryLines entries={entries} />
 
       <MainHeader type='h3' title='Add new transaction'/>
       <NewEntryForm />
