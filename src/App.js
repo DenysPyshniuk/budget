@@ -1,10 +1,12 @@
+
+import {Container, Header} from 'semantic-ui-react';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>BUDGET</h1>
-    </div>
+    <Container>
+      <Header as="h1">Budget</Header>
+    </Container>
   );
 }
 
