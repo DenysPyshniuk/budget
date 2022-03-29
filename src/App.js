@@ -1,5 +1,5 @@
 
-import {Container, Header, Statistic, Grid, Segment, Icon, Form, Button} from 'semantic-ui-react';
+import {Container, Statistic, Grid, Segment, Icon, Form, Button} from 'semantic-ui-react';
 import './App.css';
 import MainHeader from './components/MainHeader';
 
@@ -35,7 +35,7 @@ function App() {
         </Grid>
       </Segment>
 
-      <Header as='h3'>History</Header>
+      <MainHeader type='h3' title='History'/>
 
       <Segment color='red'>
         <Grid columns={3} textAlign='right'>
@@ -76,7 +76,7 @@ function App() {
         </Grid>
       </Segment>
 
-      <Header as='h3'>Add new transaction</Header>
+      <MainHeader type='h3' title='Add new transaction'/>
 
       <Form untrackable>
         <Form.Group>
