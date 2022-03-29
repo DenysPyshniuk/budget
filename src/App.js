@@ -9,7 +9,16 @@ import DisplayBalances from './components/DisplayBalances';
 import EntryLines from './components/EntryLines';
 
 function App() {
-  const [entries, setentries] = useState(initialEntries)
+  const [entries, setEntries] = useState(initialEntries)
+
+  function deleteEntry(id) {
+    const result = entries.filter(entry => entry.id !== id);
+    console.log("entries", entries);
+    console.log("result", result);
+    setEntries(result);
+
+  }
+
   return (
     <Container>
       <MainHeader title='Budget' />
@@ -17,7 +26,7 @@ function App() {
       <DisplayBalances />
       <MainHeader type='h3' title='History' />
 
-      <EntryLines entries={entries} />
+      <EntryLines entries={entries} deleteEntry={deleteEntry} />
 
       <MainHeader type='h3' title='Add new transaction'/>
       <NewEntryForm />
