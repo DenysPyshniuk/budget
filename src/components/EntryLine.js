@@ -7,7 +7,7 @@ function EntryLine({description, value, isExpense = false}) {
         <Grid columns={3} textAlign='right'>
           <Grid.Row>
           <Grid.Column width={10} textAlign='left'>{description}</Grid.Column>
-          <Grid.Column width={3}>${value}</Grid.Column>
+          <Grid.Column width={3}>{value}</Grid.Column>
           <Grid.Column width={3}>
               <Icon name='edit' bordered></Icon>
               <Icon name='trash' bordered></Icon>
