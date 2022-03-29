@@ -6,7 +6,7 @@ import MainHeader from './components/MainHeader';
 function App() {
   return (
     <Container>
-      <MainHeader/>
+      <MainHeader title='Budget' />
 
       <Statistic size='small'>
         <Statistic.Label>Your Balance:</Statistic.Label>
