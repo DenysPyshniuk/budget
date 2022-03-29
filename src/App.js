@@ -3,33 +3,26 @@ import {Container, Statistic, Grid, Segment, Icon} from 'semantic-ui-react';
 import './App.css';
 import MainHeader from './components/MainHeader';
 import NewEntryForm from './components/NewEntryForm';
+import DispalyBalance from './components/DispalyBalance';
 
 function App() {
   return (
     <Container>
       <MainHeader title='Budget' />
 
-      <Statistic size='small'>
-        <Statistic.Label>Your Balance:</Statistic.Label>
-        <Statistic.Value>2,550.53</Statistic.Value>
-      </Statistic>
+      <DispalyBalance size='small' title='Your Balance:' value='2,550.53' />
 
       <Segment textAlign='center'>
         <Grid columns={2} divided>
           <Grid.Row>
 
             <Grid.Column>
-              <Statistic size='tiny' color='green'>
-                <Statistic.Label style={{textAlign:'left'}}>Income:</Statistic.Label>
-                <Statistic.Value>1,045.50</Statistic.Value>
-              </Statistic>
+              <DispalyBalance size='tiny' color='green' style={{textAlign:'left'}} title='Income:'
+                value='1,045.50' />
             </Grid.Column>
 
             <Grid.Column>
-              <Statistic size='tiny' color='red'>
-                <Statistic.Label style={{textAlign:'left'}}>Expenses:</Statistic.Label>
-                <Statistic.Value>623.50</Statistic.Value>
-              </Statistic>
+              <DispalyBalance size='tiny' color='red' style={{textAlign:'left'}} title='Expenses:' value='623.50' />
             </Grid.Column>
 
           </Grid.Row>
