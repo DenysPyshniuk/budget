@@ -29,36 +29,43 @@ export default App;
 
 const initialEntries = [
   {
+    id: 1,
     description: "Work Income",
     value: "$1000,00",
     isExpense: false
   },
   {
+    id: 2,
     description: "Water bill",
     value: "$20,00",
     isExpense: true
   },
   {
+    id: 3,
     description: "Rent",
     value: "$300,00",
     isExpense: true
   },
   {
+    id: 4,
     description: "Power bill",
     value: "$50,00",
     isExpense: true
   },
   {
+    id: 5,
     description: "Meat",
     value: "$10,00",
     isExpense: true
   },
   {
+    id: 6,
     description: "Deposit",
     value: "$125,00",
     isExpense: false
   },
   {
+    id: 7,
     description: "Coffee",
     value: "$5,00",
     isExpense: true
