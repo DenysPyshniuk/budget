@@ -13,8 +13,15 @@ function App() {
 
   function deleteEntry(id) {
     const result = entries.filter(entry => entry.id !== id);
-    console.log("entries", entries);
-    console.log("result", result);
+    setEntries(result);
+  }
+
+  function addEntry(description, value) {
+    const result = entries.concat({
+      id: entries.lenght + 1,
+      description,
+      value
+    });
     setEntries(result);
 
   }
@@ -29,7 +36,7 @@ function App() {
       <EntryLines entries={entries} deleteEntry={deleteEntry} />
 
       <MainHeader type='h3' title='Add new transaction'/>
-      <NewEntryForm />
+      <NewEntryForm addEntry={addEntry}/>
     </Container>
   );
 }
