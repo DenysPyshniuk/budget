@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment} from 'react';
 import { Grid, Segment, Icon } from 'semantic-ui-react';
 
 function EntryLine({id, description, value, isExpense = false, deleteEntry, editEntry}) {
