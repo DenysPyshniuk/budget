@@ -7,6 +7,8 @@ import DisplayBalance from "./components/DisplayBalance";
 import DisplayBalances from "./components/DisplayBalances";
 import EntryLines from "./components/EntryLines";
 import ModalEdit from "./components/ModalEdit";
+import {createStore} from 'redux';
+
 
 function App() {
   const [entries, setEntries] = useState(initialEntries);
@@ -46,6 +48,38 @@ function App() {
     setExpenseTotal(totalExpenses);
     setIncomeTotal(totalIncomes);
   }, [entries]);
+
+  ///////////////////////////////////////////////////////////
+/////////////////        STORE          /////////////////////
+  ///////////////////////////////////////////////////////////
+
+  const store = createStore((state = initialEntries, action) => {
+    console.log('action :>> ', action);
+
+    switch (action.type) {
+      case 'ADD_ENTRY':
+        const newEntries = entries.concat({
+          id: 8,
+          description: "Coffee 2",
+          value: 4.0,
+          isExpense: true,
+        });
+        return newEntries;
+        break;
+
+      default:
+        return state;
+    }
+
+    return state;
+  });
+  console.log("STORE BEFORE: " ,store.getState());
+  store.dispatch({type: 'ADD_ENTRY'});
+  console.log("STORE AFTER: " ,store.getState());
+
+  // store.dispatch({type: 'REMOVE_ENTRY'});
+
+  ///////////////////////////////////////////////////////////
 
   function deleteEntry(id) {
     const result = entries.filter((entry) => entry.id !== id);
