@@ -58,14 +58,8 @@ function App() {
 
     switch (action.type) {
       case 'ADD_ENTRY':
-        const newEntries = entries.concat({
-          id: 8,
-          description: "Coffee 2",
-          value: 4.0,
-          isExpense: true,
-        });
+        const newEntries = state.concat({...action.payload});
         return newEntries;
-        break;
 
       default:
         return state;
@@ -73,9 +67,18 @@ function App() {
 
     return state;
   });
-  console.log("STORE BEFORE: " ,store.getState());
-  store.dispatch({type: 'ADD_ENTRY'});
-  console.log("STORE AFTER: " ,store.getState());
+
+  store.subscribe(() => {
+    console.log("STORE: ", store.getState());
+  })
+  const payload = {
+    id: 8,
+    description: "Coffee 2",
+    value: 4.0,
+    isExpense: true,
+  };
+
+  store.dispatch({type: 'ADD_ENTRY', payload});
 
   // store.dispatch({type: 'REMOVE_ENTRY'});
 
