@@ -22,7 +22,7 @@ function App() {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    if (!isOpen && entryId) {
+    if(!isOpen && entryId) {
       const index = entries.findIndex((entry) => entry.id === entryId);
       const newEntries = [...entries];
       newEntries[index].description = description;
@@ -38,7 +38,7 @@ function App() {
     let totalIncomes = 0;
     let totalExpenses = 0;
     entries.map((entry) => {
-      if (entry.isExpense) {
+      if(entry.isExpense) {
         return (totalExpenses += Number(entry.value));
       }
       return (totalIncomes += Number(entry.value));
@@ -50,17 +50,19 @@ function App() {
   }, [entries]);
 
   ///////////////////////////////////////////////////////////
-/////////////////        STORE          /////////////////////
+  /////////////////        STORE          /////////////////////
   ///////////////////////////////////////////////////////////
 
   const store = createStore((state = initialEntries, action) => {
     console.log('action :>> ', action);
-
-    switch (action.type) {
+    let newEntries;
+    switch(action.type) {
       case 'ADD_ENTRY':
-        const newEntries = state.concat({...action.payload});
+        newEntries = state.concat({...action.payload});
         return newEntries;
-
+      case 'REMOVE_ENTRY':
+        newEntries = state.filter(entry => entry.id !== action.payload.id);
+        return newEntries;
       default:
         return state;
     }
@@ -71,14 +73,19 @@ function App() {
   store.subscribe(() => {
     console.log("STORE: ", store.getState());
   })
-  const payload = {
+  const payload_add = {
     id: 8,
     description: "Coffee 2",
     value: 4.0,
     isExpense: true,
   };
 
-  store.dispatch({type: 'ADD_ENTRY', payload});
+  const payload_remove = {
+    id: 1
+  }
+
+  store.dispatch({type: 'ADD_ENTRY', payload: payload_add});
+  store.dispatch({type: 'REMOVE_ENTRY', payload: payload_remove});
 
   // store.dispatch({type: 'REMOVE_ENTRY'});
 
