@@ -7,13 +7,12 @@ import DisplayBalance from "./components/DisplayBalance";
 import DisplayBalances from "./components/DisplayBalances";
 import EntryLines from "./components/EntryLines";
 import ModalEdit from "./components/ModalEdit";
-import {createStore, combineReducers} from 'redux';
 
 
 function App() {
   const [entries, setEntries] = useState(initialEntries);
-  const [description, setDescription] = useState("");
-  const [value, setValue] = useState("");
+  const [description, setDescription] = useState('');
+  const [value, setValue] = useState('');
   const [isExpense, setIsExpense] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [entryId, setEntryId] = useState();
@@ -49,57 +48,6 @@ function App() {
     setIncomeTotal(totalIncomes);
   }, [entries]);
 
-  /////////////////////////////////////////////////////////////
-  /////////////////        STORE          /////////////////////
-  /////////////////////////////////////////////////////////////
-
-  /////////         REDUCER          //////////////////////////
-  function entriesReducer(state = initialEntries, action) {
-    let newEntries;
-    switch(action.type) {
-      case 'ADD_ENTRY':
-        newEntries = state.concat({...action.payload});
-        return newEntries;
-      case 'REMOVE_ENTRY':
-        newEntries = state.filter(entry => entry.id !== action.payload.id);
-        return newEntries;
-      default:
-        return state;
-    }
-  }
-  //////////////////////////////////////////////////////////////
-
-  const combinedReducers = combineReducers({
-    entries: entriesReducer,
-  })
-  const store = createStore(combinedReducers);
-
-
-  store.subscribe(() => {
-    console.log("STORE: ", store.getState());
-  })
-
-  const payload_add = {
-    id: 8,
-    description: "Coffee 2",
-    value: 4.0,
-    isExpense: true,
-  };
-
-////////           ACTIONS        ///////////////
-  function addEntryRedux(payload) {
-    return { type: "ADD_ENTRY", payload };
-  }
-
-  function removeEntryRedux(id) {
-    return {type: "REMOVE_ENTRY", payload: { id }};
-  }
-//////////////////////////////////////////////////
-
-  store.dispatch(addEntryRedux(payload_add));
-  store.dispatch(removeEntryRedux(1));
-
-  ///////////////////////////////////////////////////////////
 
   function deleteEntry(id) {
     const result = entries.filter((entry) => entry.id !== id);
@@ -181,43 +129,43 @@ const initialEntries = [
   {
     id: 1,
     description: "Work Income",
-    value: 1000.00,
+    value: 1000.0,
     isExpense: false,
   },
   {
     id: 2,
     description: "Water bill",
-    value: 20.00,
+    value: 20.0,
     isExpense: true,
   },
   {
     id: 3,
     description: "Rent",
-    value: 300.00,
+    value: 300.0,
     isExpense: true,
   },
   {
     id: 4,
     description: "Power bill",
-    value: 50.00,
+    value: 50.0,
     isExpense: true,
   },
   {
     id: 5,
     description: "Meat",
-    value: 10.00,
+    value: 10.0,
     isExpense: true,
   },
   {
     id: 6,
     description: "Deposit",
-    value: 125.00,
+    value: 125.0,
     isExpense: false,
   },
   {
     id: 7,
     description: "Coffee",
-    value: 5.00,
+    value: 5.0,
     isExpense: true,
   },
 ];
