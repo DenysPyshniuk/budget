@@ -7,7 +7,7 @@ import DisplayBalance from "./components/DisplayBalance";
 import DisplayBalances from "./components/DisplayBalances";
 import EntryLines from "./components/EntryLines";
 import ModalEdit from "./components/ModalEdit";
-import {createStore} from 'redux';
+import {createStore, combineReducers} from 'redux';
 
 
 function App() {
@@ -49,12 +49,12 @@ function App() {
     setIncomeTotal(totalIncomes);
   }, [entries]);
 
-  ///////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////
   /////////////////        STORE          /////////////////////
-  ///////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////
 
-  const store = createStore((state = initialEntries, action) => {
-    console.log('action :>> ', action);
+  /////////         REDUCER          //////////////////////////
+  function entriesReducer(state = initialEntries, action) {
     let newEntries;
     switch(action.type) {
       case 'ADD_ENTRY':
@@ -66,13 +66,19 @@ function App() {
       default:
         return state;
     }
+  }
+  //////////////////////////////////////////////////////////////
 
-    return state;
-  });
+  const combinedReducers = combineReducers({
+    entries: entriesReducer,
+  })
+  const store = createStore(combinedReducers);
+
 
   store.subscribe(() => {
     console.log("STORE: ", store.getState());
   })
+
   const payload_add = {
     id: 8,
     description: "Coffee 2",
@@ -80,10 +86,7 @@ function App() {
     isExpense: true,
   };
 
-  const payload_remove = {
-    id: 1
-  }
-
+////////           ACTIONS        ///////////////
   function addEntryRedux(payload) {
     return { type: "ADD_ENTRY", payload };
   }
@@ -91,11 +94,10 @@ function App() {
   function removeEntryRedux(id) {
     return {type: "REMOVE_ENTRY", payload: { id }};
   }
+//////////////////////////////////////////////////
 
   store.dispatch(addEntryRedux(payload_add));
   store.dispatch(removeEntryRedux(1));
-
-  // store.dispatch({type: 'REMOVE_ENTRY'});
 
   ///////////////////////////////////////////////////////////
 
