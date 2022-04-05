@@ -62,16 +62,16 @@ function App() {
     }
   }
 
-  function addEntry() {
-    const result = entries.concat({
-      id: entries.lenght + 1,
-      description,
-      value,
-      isExpense,
-    });
-    // setEntries(result);
-    resetEntry();
-  }
+  // function addEntry() {
+  //   const result = entries.concat({
+  //     id: entries.lenght + 1,
+  //     description,
+  //     value,
+  //     isExpense,
+  //   });
+  //   // setEntries(result);
+  //   resetEntry();
+  // }
 
   function resetEntry() {
     setDescription("");
@@ -97,7 +97,7 @@ function App() {
       <ModalEdit
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        addEntry={addEntry}
+        // addEntry={addEntry}
         description={description}
         value={value}
         isExpense={isExpense}
