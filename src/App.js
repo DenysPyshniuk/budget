@@ -11,7 +11,6 @@ import {useSelector} from 'react-redux';
 
 
 function App() {
-  const [entries, setEntries] = useState(initialEntries);
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
   const [isExpense, setIsExpense] = useState(true);
@@ -20,7 +19,7 @@ function App() {
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
-  const entriesRedux = useSelector(state => state.entries);
+  const entries = useSelector(state => state.entries);
 
   useEffect(() => {
     if(!isOpen && entryId) {
@@ -29,7 +28,7 @@ function App() {
       newEntries[index].description = description;
       newEntries[index].value = value;
       newEntries[index].isExpense = isExpense;
-      setEntries(newEntries);
+      // setEntries(newEntries);
       resetEntry();
     }
     //eslint-disable-next-line react-hooks/exhaustive-deps
@@ -49,12 +48,6 @@ function App() {
     setExpenseTotal(totalExpenses);
     setIncomeTotal(totalIncomes);
   }, [entries]);
-
-
-  function deleteEntry(id) {
-    const result = entries.filter((entry) => entry.id !== id);
-    setEntries(result);
-  }
 
   function editEntry(id) {
     console.log(`edit entry with id ${id}`);
@@ -76,7 +69,7 @@ function App() {
       value,
       isExpense,
     });
-    setEntries(result);
+    // setEntries(result);
     resetEntry();
   }
 
@@ -94,8 +87,7 @@ function App() {
       <MainHeader type="h3" title="History" />
 
       <EntryLines
-        entries={entriesRedux}
-        deleteEntry={deleteEntry}
+        entries={entries}
         isOpen={isOpen}
         editEntry={editEntry}
       />
@@ -126,48 +118,3 @@ function App() {
 }
 
 export default App;
-
-const initialEntries = [
-  {
-    id: 1,
-    description: "Work Income",
-    value: 1000.0,
-    isExpense: false,
-  },
-  {
-    id: 2,
-    description: "Water bill",
-    value: 20.0,
-    isExpense: true,
-  },
-  {
-    id: 3,
-    description: "Rent",
-    value: 300.0,
-    isExpense: true,
-  },
-  {
-    id: 4,
-    description: "Power bill",
-    value: 50.0,
-    isExpense: true,
-  },
-  {
-    id: 5,
-    description: "Meat",
-    value: 10.0,
-    isExpense: true,
-  },
-  {
-    id: 6,
-    description: "Deposit",
-    value: 125.0,
-    isExpense: false,
-  },
-  {
-    id: 7,
-    description: "Coffee",
-    value: 5.0,
-    isExpense: true,
-  },
-];
