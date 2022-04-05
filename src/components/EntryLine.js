@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import {Grid, Segment, Icon} from 'semantic-ui-react';
 import {useDispatch} from 'react-redux';
-import { removeEntryRedux, addEntryRedux } from "../actions/entries.actions";
+import { removeEntryRedux } from "../actions/entries.actions";
 
 function EntryLine({id, description, value, isExpense = false, editEntry}) {
   const dispatch = useDispatch();
