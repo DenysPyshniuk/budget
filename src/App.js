@@ -93,15 +93,7 @@ function App() {
       />
 
       <MainHeader type="h3" title="Add new transaction" />
-      <NewEntryForm
-        addEntry={addEntry}
-        description={description}
-        value={value}
-        isExpense={isExpense}
-        setDescription={setDescription}
-        setValue={setValue}
-        setIsExpense={setIsExpense}
-      />
+      <NewEntryForm />
       <ModalEdit
         isOpen={isOpen}
         setIsOpen={setIsOpen}
