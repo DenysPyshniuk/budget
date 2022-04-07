@@ -7,7 +7,6 @@ import {closeEditModal} from '../actions/modals.actions'
 
 function ModalEdit({
   isOpen,
-  setIsOpen,
   description,
   value,
   isExpense,
@@ -31,7 +30,7 @@ function ModalEdit({
       </Modal.Content>
       <Modal.Actions>
         <Button onClick={() => dispatch(closeEditModal())}>Close</Button>
-        <Button onClick={() => setIsOpen(false)} primary>
+        <Button onClick={() => dispatch(closeEditModal())} primary>
           Save
         </Button>
       </Modal.Actions>
