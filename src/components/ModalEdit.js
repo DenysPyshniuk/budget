@@ -11,6 +11,7 @@ function ModalEdit({
   description,
   value,
   isExpense,
+  id
 }) {
   const dispatch = useDispatch();
   const entryUpdate = useEntryDetails(description, value, isExpense);
@@ -29,7 +30,7 @@ function ModalEdit({
       </Modal.Content>
       <Modal.Actions>
         <Button onClick={() => dispatch(closeEditModal())}>Close</Button>
-        <Button onClick={() => dispatch(closeEditModal())} primary>
+        <Button onClick={() => entryUpdate.updateEntry(id)} primary>
           Save
         </Button>
       </Modal.Actions>
