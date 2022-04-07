@@ -14,10 +14,14 @@ function App() {
   const [incomeTotal, setIncomeTotal] = useState(0);
   const [expenseTotal, setExpenseTotal] = useState(0);
   const [total, setTotal] = useState(0);
-  const isOpen = useSelector(state => state.modals.isOpen);
+  const [entry, setEntry] = useState();
+  const {isOpen, id} = useSelector(state => state.modals);
   const entries = useSelector(state => state.entries);
 
-  useEffect(() => {}, [isOpen]);
+  useEffect(() => {
+    const index = entries.findIndex(entry => entry.id === id)
+    setEntry(entries[index]);
+  }, [isOpen, id]);
 
   useEffect(() => {
     let totalIncomes = 0;
@@ -47,6 +51,7 @@ function App() {
       <NewEntryForm />
       <ModalEdit
         isOpen={isOpen}
+        {...entry}
       />
     </Container>
   );
