@@ -7,8 +7,8 @@ import DisplayBalance from "./components/DisplayBalance";
 import DisplayBalances from "./components/DisplayBalances";
 import EntryLines from "./components/EntryLines";
 import ModalEdit from "./components/ModalEdit";
-import { useSelector } from "react-redux";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllEntries } from './actions/entries.actions';
 
 function App() {
   const [incomeTotal, setIncomeTotal] = useState(0);
@@ -22,6 +22,7 @@ function App() {
     const index = entries.findIndex((entry) => entry.id === id);
     setEntry(entries[index]);
   }, [isOpen, id, entries]);
+
 
   useEffect(() => {
     let totalIncomes = 0;
@@ -38,13 +39,9 @@ function App() {
     setIncomeTotal(totalIncomes);
   }, [entries]);
 
-  async function fetchInitialData() {
-    const result = await axios.get('http://localhost:3001/entries');
-    console.log(result);
-
-  }
+  const dispatch = useDispatch()
   useEffect(() => {
-    fetchInitialData();
+    dispatch(getAllEntries());
   }, []);
 
   return (
