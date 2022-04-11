@@ -1,4 +1,4 @@
-import entriesTypes from '../actions/entries.actions';
+import entriesTypes from "../actions/entries.actions";
 
 const reducer = (state = initialEntries, action) => {
   let newEntries;
@@ -11,15 +11,19 @@ const reducer = (state = initialEntries, action) => {
     case entriesTypes.REMOVE_ENTRY:
       newEntries = state.filter((entry) => entry.id !== action.payload.id);
       return newEntries;
+    case entriesTypes.POPULATE_ENTRY_DETAILS:
     case entriesTypes.UPDATE_ENTRY:
+      console.log("action: >>", action);
       newEntries = [...state];
-      const index = newEntries.findIndex(entry => entry.id === action.payload.id);
-      newEntries[index] = {...action.payload.entry};
+      const index = newEntries.findIndex(
+        (entry) => entry.id === action.payload.id
+      );
+      newEntries[index] = { ...newEntries[index], ...action.payload.entry };
       return newEntries;
     default:
       return state;
   }
-}
+};
 
 export default reducer;
 
