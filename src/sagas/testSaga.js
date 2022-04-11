@@ -52,7 +52,7 @@ export function* testSagaTakeEvery() {
     "TEST_MESSAGE_3",
     testSagaTakeEveryProcess
   );
-  console.log(`Finished TakeEvery for index: ${ payload }`);
+  console.log(`Finished TakeEvery for index: ${payload}`);
 }
 
 function* infinitySaga() {
@@ -69,7 +69,6 @@ function* infinitySaga() {
       console.log("The fork was cancelled?", yield cancelled());
     }
   }
-  console.log("ending infinity saga");
 }
 
 export function* testSagaCanceled() {
@@ -80,16 +79,16 @@ export function* testSagaCanceled() {
 }
 
 export function* testSagaTakeLatest() {
-  yield takeLatest('TEST_MESSAGE_5', infinitySaga)
+  yield takeLatest("TEST_MESSAGE_5", infinitySaga);
 }
 
 export function* dispatchTest() {
   let index = 0;
-  while(true) {
+  while (true) {
     yield delay(5000);
     yield put({
-      type: 'TEST_MESSAGE_5',
-      payload: index
+      type: "TEST_MESSAGE_5",
+      payload: index,
     });
     index++;
   }
