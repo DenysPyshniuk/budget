@@ -26,15 +26,10 @@
         {
             "id": 7,
             "description": "Coffee"
-        },
-        {
-            "id": 8,
-            "description": "New Item"
         }
     ],
     "values": [{
             "id": 1,
-
             "value": 1000,
             "isExpense": false
         },
@@ -66,11 +61,6 @@
         {
             "id": 7,
             "value": 5,
-            "isExpense": true
-        },
-        {
-            "id": 8,
-            "value": 445,
             "isExpense": true
         }
     ]
