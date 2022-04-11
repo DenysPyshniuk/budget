@@ -12,7 +12,6 @@ export function* getAllEntries() {
 
 export function* getEntryDetails(id) {
   const { data } = yield call (axios, `http://localhost:3001/values/${id}`);
-  // console.log('data :>> ', data);
   yield put(populateEntryDetails(id, data))
 }
 
