@@ -1,67 +1,51 @@
 {
-    "entries": [{
-            "id": 1,
-            "description": "Work Income"
-        },
-        {
-            "id": 2,
-            "description": "Water bill"
-        },
-        {
-            "id": 3,
-            "description": "Rent"
-        },
-        {
-            "id": 4,
-            "description": "Power bill"
-        },
-        {
-            "id": 5,
-            "description": "Meat"
-        },
-        {
-            "id": 6,
-            "description": "Deposit"
-        },
-        {
-            "id": 7,
-            "description": "Coffee"
-        }
-    ],
-    "values": [{
-            "id": 1,
-            "value": 1000,
-            "isExpense": false
-        },
-        {
-            "id": 2,
-            "value": 20,
-            "isExpense": true
-        },
-        {
-            "id": 3,
-            "value": 300,
-            "isExpense": true
-        },
-        {
-            "id": 4,
-            "value": 50,
-            "isExpense": true
-        },
-        {
-            "id": 5,
-            "value": 10,
-            "isExpense": true
-        },
-        {
-            "id": 6,
-            "value": 125,
-            "isExpense": false
-        },
-        {
-            "id": 7,
-            "value": 5,
-            "isExpense": true
-        }
-    ]
+  "entries": [
+    {
+      "id": 1,
+      "description": "Work Income"
+    },
+    {
+      "id": 2,
+      "description": "Water bill"
+    },
+    {
+      "id": 3,
+      "description": "Rent"
+    },
+    {
+      "id": 4,
+      "description": "Power bill"
+    },
+    {
+      "id": 6,
+      "description": "Deposit"
+    }
+  ],
+  "values": [
+    {
+      "id": 1,
+      "value": 1000,
+      "isExpense": false
+    },
+    {
+      "id": 2,
+      "value": 20,
+      "isExpense": true
+    },
+    {
+      "id": 3,
+      "value": 300,
+      "isExpense": true
+    },
+    {
+      "id": 4,
+      "value": 50,
+      "isExpense": true
+    },
+    {
+      "id": 6,
+      "value": 125,
+      "isExpense": false
+    }
+  ]
 }
